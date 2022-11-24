@@ -9,10 +9,18 @@ pub struct Dog {
     sounds: Vec<String>,
 }
 
-impl Pet for Dog {
-    const BOREDOM_LIMIT: u8 = 75;
-    const HUNGER_LIMIT: u8 = 80;
+impl Dog {
+    pub fn new() -> Self {
+        Self {
+            boredom: 0,
+            hunger: 0,
+            health: 0,
+            sounds: Vec::new(),
+        }
+    }
+}
 
+impl Pet for Dog {
     fn get_boredom(&self) -> u8 {
         self.boredom
     }
@@ -54,4 +62,8 @@ impl Pet for Dog {
             self.health = self.health.clamped_sub(self.hunger_rate() / 2, 0..=100);
         }
     }
+
+    const BOREDOM_LIMIT: u8 = 75;
+
+    const HUNGER_LIMIT: u8 = 80;
 }

@@ -13,7 +13,9 @@ macro_rules! petfood {
                 $health
             }
 
-            const COST: u32 = $cost;
+            fn get_cost(&self) -> usize {
+                $cost
+            }
         }
     };
 }

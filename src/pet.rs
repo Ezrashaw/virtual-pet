@@ -1,5 +1,5 @@
 pub mod dog;
-mod food;
+pub mod food;
 
 /// A pet trait with different stats.
 ///
@@ -97,5 +97,6 @@ pub trait PetFood {
     /// Returns the amount that the [`Pet`]'s health will increase by.
     fn get_healing(&self) -> u8;
 
-    const COST: u32;
+    /// Returns the amount that the food will cost.
+    fn get_cost(&self) -> usize;
 }

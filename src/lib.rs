@@ -1,4 +1,4 @@
 #![feature(exclusive_range_pattern)]
 
-mod pet;
-mod utils;
+pub mod pet;
+pub mod utils;
