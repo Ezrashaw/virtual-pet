@@ -14,7 +14,7 @@ impl Dog {
         Self {
             boredom: 0,
             hunger: 0,
-            health: 0,
+            health: 100,
             sounds: Vec::new(),
         }
     }

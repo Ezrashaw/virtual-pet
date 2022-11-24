@@ -4,6 +4,11 @@ use virtual_pet::pet::{dog::Dog, food::*, Pet, PetFood};
 
 fn main() {
     println!("`virtual-pet` in Rust!");
+    let mut sim = Simulation::new("test".to_owned());
+
+    loop {
+        sim.tick();
+    }
 }
 
 pub struct Simulation {
