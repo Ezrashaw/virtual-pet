@@ -47,6 +47,11 @@ impl Pet for Dog {
     }
 
     fn tick(&mut self) {
-        todo!()
+        self.boredom = self.boredom.clamped_add(self.boredom_rate(), 0..=100);
+        self.hunger = self.hunger.clamped_add(self.hunger_rate(), 0..=100);
+
+        if self.hunger > Self::HUNGER_LIMIT {
+            self.health = self.health.clamped_sub(self.hunger_rate() / 2, 0..=100);
+        }
     }
 }

@@ -1,4 +1,5 @@
 pub mod dog;
+mod food;
 
 /// A pet trait with different stats.
 ///
@@ -38,14 +39,17 @@ pub trait Pet {
     }
 
     // /// Returns the rate that the pet's hunger increases each tick.
-    // fn hunger_rate(&self) -> u8 {
-    //     match self.get_health()
-    //     if self.get_boredom() > Self::BOREDOM_LIMIT {
-    //         8
-    //     } else {
-    //         4
-    //     }
-    // }
+    fn hunger_rate(&self) -> u8 {
+        let initial = if self.get_health() <= 25 { 2 } else { 4 };
+
+        if self.get_boredom() > Self::BOREDOM_LIMIT {
+            initial * 2
+        } else if self.get_boredom() >= 90 {
+            initial * 4
+        } else {
+            initial
+        }
+    }
 
     /// Returns three strings (health, hunger, boredom) which indicate the pet's well-being.
     fn mood(&self) -> (&str, &str, &str) {
@@ -89,4 +93,9 @@ pub trait Pet {
 pub trait PetFood {
     /// Returns the amount that the [`Pet`]'s hunger will decrease by.
     fn get_nutrition(&self) -> u8;
+
+    /// Returns the amount that the [`Pet`]'s health will increase by.
+    fn get_healing(&self) -> u8;
+
+    const COST: u32;
 }

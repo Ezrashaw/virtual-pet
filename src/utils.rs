@@ -1,4 +1,4 @@
-use std::ops::{Range, RangeInclusive};
+use std::ops::RangeInclusive;
 
 pub trait ClampedArithmetic: Sized {
     fn clamped_add(self, rhs: Self, range: RangeInclusive<Self>) -> Self;
